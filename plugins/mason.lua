@@ -15,6 +15,16 @@ return {
         },
         automatic_installation = true,
         run_on_start = true,
+
+        handlers = {
+          -- attach installed LSP's to buffers
+          function(server_name)
+            require("lspconfig")[server_name].setup{
+              -- filetypes = { "php" },
+              -- root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
+            }
+          end,
+        },
       }
     end,
   },
