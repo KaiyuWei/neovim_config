@@ -15,8 +15,15 @@ return {
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     local null_ls = require "null-ls"
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
-      -- Add installed formatters here 
+      -- Lua formatter
       null_ls.builtins.formatting.stylua,
+      
+      -- Go formatters
+      null_ls.builtins.formatting.gofumpt,      -- Enhanced gofmt
+      null_ls.builtins.formatting.goimports_reviser, -- Import organizer
+      null_ls.builtins.formatting.golines,     -- Line length formatter
+      
+      -- Web formatters
       -- null_ls.builtins.formatting.prettier,
     })
   end,

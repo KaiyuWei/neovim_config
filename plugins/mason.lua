@@ -12,6 +12,7 @@ return {
           "phpactor",
           "ts_ls",
           "pyright",
+          "gopls",
         },
         automatic_installation = true,
         run_on_start = true,
@@ -19,7 +20,7 @@ return {
         handlers = {
           -- attach installed LSP's to buffers
           function(server_name)
-            require("lspconfig")[server_name].setup{
+            require("lspconfig")[server_name].setup {
               -- filetypes = { "php" },
               -- root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
             }
@@ -32,7 +33,13 @@ return {
     "jay-babu/mason-null-ls.nvim",
     config = function()
       require("mason-null-ls").setup {
-        ensure_installed = { "stylua", "prettier" },
+        ensure_installed = { 
+          "stylua", 
+          "prettier",
+          "gofumpt",
+          "goimports-reviser",
+          "golines",
+        },
         automatic_installation = true,
         run_on_start = true,
       }
